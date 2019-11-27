@@ -39,7 +39,7 @@ FILES_TESTED=0
 for f in `find ${DIR} -type f -name '*.yaml'`; do
   if [[ $(isHelmRelease ${f}) == "true" ]]; then
     ${HRVAL} ${f} ${IGNORE_VALUES} ${KUBE_VER} ${HELM_VER}
-    (( FILES_TESTED++ ))
+    FILES_TESTED=$(( FILES_TESTED+1 ))
   else
     echo "Ignoring ${f} not a HelmRelease"
   fi
