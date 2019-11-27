@@ -46,4 +46,4 @@ for f in `find ${DIR} -type f -name '*.yaml'`; do
 done
 
 # This will set the GitHub actions output 'numFilesTested'
-echo ::set-output name=numFilesTested::$FILES_TESTED
+echo "::set-output name=numFilesTested::$FILES_TESTED"
