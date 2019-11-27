@@ -35,14 +35,15 @@ function isHelmRelease {
 
 # Find yaml files in directory recursively
 DIR_PATH=$(echo ${DIR} | sed "s/^\///;s/\/$//")
-outputs.numFilesTested=0
+FILES_TESTED=0
 for f in `find ${DIR} -type f -name '*.yaml'`; do
   if [[ $(isHelmRelease ${f}) == "true" ]]; then
     ${HRVAL} ${f} ${IGNORE_VALUES} ${KUBE_VER} ${HELM_VER}
-    ((outputs.numFilesTested++))
+    (( FILES_TESTED++ ))
   else
     echo "Ignoring ${f} not a HelmRelease"
   fi
 done
 
-export outputs.numFilesTested
+# This will set the GitHub actions output 'numFilesTested'
+echo ::set-output name=numFilesTested::$FILES_TESTED
