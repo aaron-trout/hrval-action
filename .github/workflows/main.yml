@@ -27,11 +27,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: validate-dir
+      - name: Validate all Helm Releases in the test dir
+        id: validate-dir
         uses: ./
         with:
           helmRelease: test/
-      - name: check-num-files-tested
+      - name: Check tested file count
         env:
           NUM_FILES_TESTED: ${{ steps.validate-dir.outputs.numFilesTested }}
         run: "(( NUM_FILES_TESTED==3 ))"
