@@ -2,6 +2,10 @@
 
 set -o errexit
 
+apt update
+apt install -y pcregrep
+rm -rf /var/lib/apt/lists/*
+
 curl -sL https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl && chmod +x /usr/local/bin/kubectl
 
 curl -sL https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz | tar xz && mv kubeval /bin/kubeval
