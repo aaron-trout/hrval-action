@@ -2,6 +2,8 @@
 
 set -o errexit
 
+set -x
+
 HELM_RELEASE=${1}
 IGNORE_VALUES=${2}
 KUBE_VER=${3-master}
