@@ -44,8 +44,8 @@ function clone {
   CHART_PATH=$(yq r ${1} spec.chart.path)
   cd ${2}
   git init -q
-  git remote add origin ${GIT_REPO}
   echo "Fetching chart repo from ${GIT_REPO}"
+  git remote add origin ${GIT_REPO}
   git fetch -q origin
   git checkout -q ${GIT_REF}
   cd ${ORIGIN}
